@@ -1,0 +1,17 @@
+VISUALGO
+
+For installation use maven:
+
+$ git clone git@github.com:jhilary/visualgo.git
+$ cd visualgo/trunk
+$ mvn package
+$ mvn eclipse:eclipse
+
+Import in eclipse:
+File -> Import -> Existing Maven Project
+
+Build in eclipse:
+Run as -> Maven build.. -> [set goal "package"]
+
+Run in Eclipse:
+Run -> Main
