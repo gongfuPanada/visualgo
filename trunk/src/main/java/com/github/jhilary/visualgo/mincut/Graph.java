@@ -4,9 +4,11 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedList;
 
-public class Graph {
+public class Graph implements Cloneable{
 	HashMap<Integer, Node> nodes = new HashMap<Integer, Node>();
 	LinkedList<Edge> edges = new LinkedList<Edge>();
+	
+	public Graph() {}
 	
 	public Graph(HashMap<Integer, LinkedList<Integer>> nodeGraph) throws GraphException{
 		Iterator<Integer> iter = nodeGraph.keySet().iterator();
@@ -35,11 +37,15 @@ public class Graph {
 		Node nodeTo = nodes.get(to);
 		if(nodeFrom == null || nodeTo == null){
 			throw new GraphException("There are no exist nodes with these labels");
-		}
-		Edge edge = new Edge(nodeFrom, nodeTo);
+		} 
+		this.addEdge(nodeFrom, nodeTo);
+	}
+	
+	private void addEdge(Node from, Node to) {
+		Edge edge = new Edge(from, to);
 		edges.add(edge);
-		nodeFrom.addEdge(edge);
-		nodeTo.addEdge(edge);
+		from.addEdge(edge);
+		to.addEdge(edge);
 	}
 	
 	public void removeEdge(Edge edge) {
@@ -65,16 +71,28 @@ public class Graph {
 		Node nodeTo = edge.getSecond();
 		removeEdge(edge);
 		if(nodeFrom != nodeTo) {
-			Iterator<Edge> nodeFromEdges = nodeFrom.getEdges().iterator();
-			while(nodeFromEdges.hasNext()){
-				nodeFromEdges.next().replace(nodeFrom, nodeTo);
+			for(Edge e : nodeFrom.getEdges()){
+				e.replace(nodeFrom, nodeTo);
 			}
-			Iterator<Edge> nodeToEdges = nodeTo.getEdges().iterator();
-			while(nodeToEdges.hasNext()){
-				nodeToEdges.next().replace(nodeFrom, nodeTo);
+			for(Edge e : nodeTo.getEdges()){
+				e.replace(nodeFrom, nodeTo);
 			}
 			nodeTo.addEdges(nodeFrom.getEdges());
 			nodes.remove(nodeFrom.getLabel());
 		}
+	}
+	
+	@Override
+	public Graph clone() {
+		Graph newGraph = new Graph();
+		for (Node node: this.getNodes().values()) {
+			newGraph.addNode(node.getLabel());
+		}
+		for (Edge edge: this.getEdges()) {
+			Node from = newGraph.getNodes().get(edge.getFirst().getLabel());
+			Node to = newGraph.getNodes().get(edge.getSecond().getLabel());
+			newGraph.addEdge(from, to);
+		}
+		return newGraph;
 	}
 }
