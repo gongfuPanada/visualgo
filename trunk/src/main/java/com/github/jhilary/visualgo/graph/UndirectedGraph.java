@@ -1,16 +1,17 @@
-package com.github.jhilary.visualgo.mincut;
+package com.github.jhilary.visualgo.graph;
 
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedList;
 
-public class Graph implements Cloneable{
+
+public class UndirectedGraph implements Graph, Cloneable{
 	HashMap<Label, Node> nodes = new HashMap<Label, Node>();
 	LinkedList<Edge> edges = new LinkedList<Edge>();
 	
-	public Graph() {}
+	public UndirectedGraph() {}
 	
-	public Graph(HashMap<Integer, LinkedList<Integer>> nodeGraph) throws GraphException{
+	public UndirectedGraph(HashMap<Integer, LinkedList<Integer>> nodeGraph) throws GraphException{
 		Iterator<Integer> iter = nodeGraph.keySet().iterator();
 		while(iter.hasNext()){
 			Integer key = iter.next();
@@ -88,8 +89,8 @@ public class Graph implements Cloneable{
 	}
 	
 	@Override
-	public Graph clone() {
-		Graph newGraph = new Graph();
+	public UndirectedGraph clone() {
+		UndirectedGraph newGraph = new UndirectedGraph();
 		for (Node node: this.getNodes().values()) {
 			newGraph.addNode(node.getLabel());
 		}

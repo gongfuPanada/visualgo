@@ -8,10 +8,15 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedList;
 
+import com.github.jhilary.visualgo.graph.Edge;
+import com.github.jhilary.visualgo.graph.GraphException;
+import com.github.jhilary.visualgo.graph.Node;
+import com.github.jhilary.visualgo.graph.UndirectedGraph;
+
 
 public class GraphUtil {
 
-	private static int minCutIteration(Graph g){
+	private static int minCutIteration(UndirectedGraph g){
 		Collections.shuffle(g.getEdges());
 		while(g.getNodesSize() != 2 && g.getEdges().size() != 0){
 			Edge edge = g.getEdges().getFirst();
@@ -31,9 +36,9 @@ public class GraphUtil {
 	 public static int minCut(String data, String delimiter) throws IOException, GraphException{
 			InputStream is = new ByteArrayInputStream(data.getBytes());
 			HashMap<Integer, LinkedList<Integer>> graphData = DataReader.readGraph(is, delimiter);
-			Graph baseGraph = new Graph(graphData);
+			UndirectedGraph baseGraph = new UndirectedGraph(graphData);
 			is.close();
-			Graph workGraph;
+			UndirectedGraph workGraph;
 			int min = Integer.MAX_VALUE;
 			long startTime = System.nanoTime();
 			for(int i = 0 ; i < 10000; i++){

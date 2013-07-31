@@ -1,4 +1,5 @@
-package com.github.jhilary.visualgo.mincut;
+package com.github.jhilary.visualgo.graph;
+
 
 public class Edge implements Comparable<Edge>{
 	private Node node1;

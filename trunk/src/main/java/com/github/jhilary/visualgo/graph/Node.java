@@ -1,6 +1,7 @@
-package com.github.jhilary.visualgo.mincut;
+package com.github.jhilary.visualgo.graph;
 
 import java.util.ArrayList;
+
 
 public class Node implements Comparable<Node>{
 	private Label label;

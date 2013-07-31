@@ -1,4 +1,4 @@
-package com.github.jhilary.visualgo.mincut;
+package com.github.jhilary.visualgo.graph;
 
 public class GraphException extends Exception{
 

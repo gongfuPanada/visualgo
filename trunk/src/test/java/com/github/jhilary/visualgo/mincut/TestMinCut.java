@@ -12,6 +12,8 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
 
+import com.github.jhilary.visualgo.graph.GraphException;
+
 @RunWith(value = Parameterized.class)
 public class TestMinCut {
 	 private String string;

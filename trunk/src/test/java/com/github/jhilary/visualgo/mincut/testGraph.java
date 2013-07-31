@@ -8,6 +8,11 @@ import java.util.Iterator;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
+
+import com.github.jhilary.visualgo.graph.Edge;
+import com.github.jhilary.visualgo.graph.GraphException;
+import com.github.jhilary.visualgo.graph.UndirectedGraph;
+
 import static org.junit.Assert.assertThat; 
 import static org.hamcrest.CoreMatchers.*;
 
@@ -24,7 +29,7 @@ public class testGraph {
 				     "4 1 3";
 	 
 		InputStream is = new ByteArrayInputStream(str.getBytes());
-		Graph g = new Graph(DataReader.readGraph(is, " "));
+		UndirectedGraph g = new UndirectedGraph(DataReader.readGraph(is, " "));
 		Collections.sort(g.getEdges());
 		assertThat(g.getEdges().toString(), is("[[1,2], [1,3], [1,4], [2,3], [3,4]]"));
 		assertThat(g.getNodes().toString(), is("{1=[[1,2], [1,3], [1,4]], 2=[[1,2], [2,3]], 3=[[1,3], [2,3], [3,4]], 4=[[1,4], [3,4]]}"));
@@ -39,7 +44,7 @@ public class testGraph {
 				     "4 1 3";
 		 
 		InputStream is = new ByteArrayInputStream(str.getBytes());
-		Graph g = new Graph(DataReader.readGraph(is, " "));
+		UndirectedGraph g = new UndirectedGraph(DataReader.readGraph(is, " "));
 		Edge e = g.getEdges().getFirst();
 		g.removeEdge(e);
 		
@@ -57,7 +62,7 @@ public class testGraph {
 				     "4 1 3";
 		 
 		InputStream is = new ByteArrayInputStream(str.getBytes());
-		Graph g = new Graph(DataReader.readGraph(is, " "));
+		UndirectedGraph g = new UndirectedGraph(DataReader.readGraph(is, " "));
 		
 		Edge e = g.getEdges().getFirst();
 		
