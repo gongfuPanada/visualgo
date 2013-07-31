@@ -1,11 +1,12 @@
 package com.github.jhilary.visualgo.mincut;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 
 
 public class Node implements Comparable<Node>{
 	private Integer label;
-	private LinkedList<Edge> edges = new LinkedList<Edge>();
+	private ArrayList<Edge> edges = new ArrayList<Edge>();
 	
 	public Node(Integer label){
 		this.label = label;
@@ -22,11 +23,11 @@ public class Node implements Comparable<Node>{
 		edges.add(edge);
 	}
 	
-	public void addEdges(LinkedList<Edge> set){
+	public void addEdges(ArrayList<Edge> set){
 		edges.addAll(set);
 	}
 	
-	public LinkedList<Edge> getEdges(){
+	public ArrayList<Edge> getEdges(){
 		return edges;
 	}
 	

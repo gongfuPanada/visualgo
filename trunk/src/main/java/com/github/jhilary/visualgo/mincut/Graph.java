@@ -61,7 +61,6 @@ public class Graph {
 	}
 
 	public void mergeEdge(Edge edge){
-
 		Node nodeFrom = edge.getFirst();
 		Node nodeTo = edge.getSecond();
 		removeEdge(edge);
