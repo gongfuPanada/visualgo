@@ -125,7 +125,7 @@ public class TestMinCut {
 	 }
 	 
 	 @Test
-	 public void testMinCut() throws IOException{
+	 public void testMinCut() throws IOException, GraphException{
 		 int min = GraphUtil.minCut(this.string, " ");
 		 assertEquals("Mincut doesn't converge right:", this.mincuts, min);
 	 }

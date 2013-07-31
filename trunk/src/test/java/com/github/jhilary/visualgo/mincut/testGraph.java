@@ -16,7 +16,7 @@ import static org.hamcrest.CoreMatchers.*;
 public class testGraph {
 	
 	@Test
-	public void testGraphConstruction(){
+	public void testGraphConstruction() throws GraphException{
 		   String str = 
 				   	 "1 2 3 4\n" +
 				     "2 1 3\n" +
@@ -31,7 +31,7 @@ public class testGraph {
 	}
 
 	@Test
-	public void testRemoveEdge(){
+	public void testRemoveEdge() throws GraphException{
 		   String str = 
 				   	 "1 2 3 4\n" +
 				     "2 1 3\n" +
@@ -49,7 +49,7 @@ public class testGraph {
 			}
 	
 	@Test
-	public void testMergeEdge(){
+	public void testMergeEdge() throws GraphException{
 		   String str = 
 				   	 "1 2 3 4\n" +
 				     "2 1 3\n" +

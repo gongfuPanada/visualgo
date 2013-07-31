@@ -9,7 +9,7 @@ public class Graph {
 	HashMap<Integer, Node> nodes = new HashMap<Integer, Node>();
 	LinkedList<Edge> edges = new LinkedList<Edge>();
 	
-	public Graph(HashMap<Integer, LinkedList<Integer>> nodeGraph){
+	public Graph(HashMap<Integer, LinkedList<Integer>> nodeGraph) throws GraphException{
 		Iterator<Integer> iter = nodeGraph.keySet().iterator();
 		while(iter.hasNext()){
 			Integer key = iter.next();
@@ -17,6 +17,7 @@ public class Graph {
 			Iterator<Integer> neighbours = nodeGraph.get(key).iterator();
 			while(neighbours.hasNext()){
 				Integer neighbour = neighbours.next();
+				addNode(neighbour);
 				if(key <= neighbour){
 					addEdge(key, neighbour);
 				} 
@@ -30,24 +31,16 @@ public class Graph {
 		}
 	}
 	
-	public void addEdge(Integer from, Integer to){
-		addNode(from);
-		addNode(to);
+	public void addEdge(Integer from, Integer to) throws GraphException{
 		Node nodeFrom = nodes.get(from);
 		Node nodeTo = nodes.get(to);
+		if(nodeFrom == null || nodeTo == null){
+			throw new GraphException("There are no exist nodes with these labels");
+		}
 		Edge edge = new Edge(nodeFrom, nodeTo);
 		edges.add(edge);
 		nodeFrom.addEdge(edge);
 		nodeTo.addEdge(edge);
-	}
-	
-	public void removeEdge(Integer from, Integer to){
-		Node nodeFrom = nodes.get(from);
-		Node nodeTo = nodes.get(to);
-		Edge e = new Edge(nodeFrom, nodeTo);
-		edges.remove(e);
-		nodeFrom.removeEdge(e);
-		nodeTo.removeEdge(e);
 	}
 	
 	public void removeEdge(Edge edge) {

@@ -18,6 +18,9 @@ public class Main {
 		} catch (IOException e) {
 			System.out.println("Cannot read data by URL");
 			System.exit(1);
+		} catch (GraphException e) {
+			System.out.println("MinCut problems: " + e.getMessage());
+			System.exit(1);
 		}
 	}
 }
