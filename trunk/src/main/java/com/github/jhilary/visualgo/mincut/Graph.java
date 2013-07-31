@@ -4,7 +4,6 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedList;
 
-
 public class Graph {
 	HashMap<Integer, Node> nodes = new HashMap<Integer, Node>();
 	LinkedList<Edge> edges = new LinkedList<Edge>();
@@ -62,6 +61,7 @@ public class Graph {
 	}
 
 	public void mergeEdge(Edge edge){
+
 		Node nodeFrom = edge.getFirst();
 		Node nodeTo = edge.getSecond();
 		removeEdge(edge);

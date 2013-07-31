@@ -14,11 +14,8 @@ public class GraphUtil {
 	private static int minCutIteration(Graph g){
 		Collections.shuffle(g.getEdges());
 		while(g.getNodesSize() != 2 && g.getEdges().size() != 0){
-
 			Edge edge = g.getEdges().getFirst();
 			g.mergeEdge(edge);
-			Collections.shuffle(g.getEdges());
-			
 		}
 		int mincut = 0;
 		Node first = g.getNodes().get(g.getNodes().keySet().iterator().next());
@@ -40,8 +37,8 @@ public class GraphUtil {
 				is.close();
 				int min = Integer.MAX_VALUE;
 				long startTime = System.nanoTime();
-				for(int i = 0 ; i < 100; i++){
-					System.out.println("Mincut iteration #" + i + " of " + 100);
+				for(int i = 0 ; i < 10000; i++){
+					System.out.println("Mincut iteration #" + i + " of " + 10000);
 					int res = minCutIteration(g);
 					if(res < min){
 						min = res;
@@ -52,7 +49,7 @@ public class GraphUtil {
 					is.close();
 					System.out.println("mincut: " + res + "; global min: " + min);
 				}
-				System.out.println("Time for 100 iterations: " + (((System.nanoTime() - startTime))/1000000000));
+				System.out.println("Time for 10000 iterations: " + (((System.nanoTime() - startTime))/1000000000));
 				return min;
 			} catch (GraphException e) {
 				throw new GraphException("Bad graph input data: " + e.getMessage());
