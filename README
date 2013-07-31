@@ -2,7 +2,12 @@ VISUALGO
 
 For installation use maven:
 
+Read-only address
+$ git clone git://github.com/jhilary/visualgo.git
+
+With authentification:
 $ git clone git@github.com:jhilary/visualgo.git
+
 $ cd visualgo/trunk
 $ mvn package
 $ mvn eclipse:eclipse
