@@ -5,13 +5,18 @@ import java.util.Iterator;
 import java.util.LinkedList;
 
 
-public class UndirectedGraph implements Graph, Cloneable{
-	HashMap<Label, Node> nodes = new HashMap<Label, Node>();
-	LinkedList<Edge> edges = new LinkedList<Edge>();
+public class UndirectedGraph extends Graph{
 	
-	public UndirectedGraph() {}
+	public UndirectedGraph() {		
+		super();
+	}
+	
+	public UndirectedGraph(UndirectedGraph g) {		
+		super(g);
+	}
 	
 	public UndirectedGraph(HashMap<Integer, LinkedList<Integer>> nodeGraph) throws GraphException{
+		super(new HashMap<Label, Node>(), new LinkedList<Edge>());
 		Iterator<Integer> iter = nodeGraph.keySet().iterator();
 		while(iter.hasNext()){
 			Integer key = iter.next();
@@ -27,20 +32,24 @@ public class UndirectedGraph implements Graph, Cloneable{
 		}
 	}
 	
+	@Override
 	public void addNode(Integer label){
 		addNode(new Label(label));
 	}
 	
+	@Override
 	public void addNode(Label label){
 		if (!nodes.containsKey(label)){
 			nodes.put(label, new Node(label));
 		}
 	}
 	
+	@Override
 	public void addEdge(Integer from, Integer to) throws GraphException{
 		addEdge(new Label(from), new Label(to));
 	}
 	
+	@Override
 	public void addEdge(Label from, Label to) throws GraphException{
 		Node nodeFrom = nodes.get(from);
 		Node nodeTo = nodes.get(to);
@@ -50,31 +59,22 @@ public class UndirectedGraph implements Graph, Cloneable{
 		this.addEdge(nodeFrom, nodeTo);
 	}
 	
-	private void addEdge(Node from, Node to) {
+	@Override
+	void addEdge(Node from, Node to) {
 		Edge edge = new Edge(from, to);
 		edges.add(edge);
 		from.addEdge(edge);
 		to.addEdge(edge);
 	}
 	
+	@Override
 	public void removeEdge(Edge edge) {
 		edges.remove(edge);
 		edge.getFirst().removeEdge(edge);
 		edge.getSecond().removeEdge(edge);
 	}
-	
-	public LinkedList<Edge> getEdges(){
-		return edges;
-	}
-	
-	public HashMap<Label, Node> getNodes(){
-		return nodes;
-	}
-	
-	public int getNodesSize(){
-		return nodes.size();
-	}
 
+	@Override
 	public void mergeEdge(Edge edge){
 		Node nodeFrom = edge.getFirst();
 		Node nodeTo = edge.getSecond();
@@ -88,17 +88,5 @@ public class UndirectedGraph implements Graph, Cloneable{
 		}
 	}
 	
-	@Override
-	public UndirectedGraph clone() {
-		UndirectedGraph newGraph = new UndirectedGraph();
-		for (Node node: this.getNodes().values()) {
-			newGraph.addNode(node.getLabel());
-		}
-		for (Edge edge: this.getEdges()) {
-			Node from = newGraph.getNodes().get(edge.getFirst().getLabel());
-			Node to = newGraph.getNodes().get(edge.getSecond().getLabel());
-			newGraph.addEdge(from, to);
-		}
-		return newGraph;
-	}
+
 }

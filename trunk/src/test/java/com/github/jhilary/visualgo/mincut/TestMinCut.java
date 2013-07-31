@@ -2,8 +2,11 @@ package com.github.jhilary.visualgo.mincut;
 
 import static org.junit.Assert.assertEquals;
 
+import java.io.ByteArrayInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.Collection;
+import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -13,6 +16,8 @@ import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
 
 import com.github.jhilary.visualgo.graph.GraphException;
+import com.github.jhilary.visualgo.graph.GraphUtil;
+import com.github.jhilary.visualgo.graph.UndirectedGraph;
 
 @RunWith(value = Parameterized.class)
 public class TestMinCut {
@@ -126,10 +131,13 @@ public class TestMinCut {
        return expectedTestData;
 	 }
 	 
-	 @Test
-	 public void testMinCut() throws IOException, GraphException{
-		 int min = GraphUtil.minCut(this.string, " ");
-		 assertEquals("Mincut doesn't converge right:", this.mincuts, min);
+	@Test
+	public void testMinCut() throws IOException, GraphException{
+		InputStream is = new ByteArrayInputStream(this.string.getBytes());
+		HashMap<Integer, LinkedList<Integer>> graphData = DataReader.readGraph(is, " ");
+		is.close();
+		int min = GraphUtil.minCut(new UndirectedGraph(graphData));
+		assertEquals("Mincut doesn't converge right:", this.mincuts, min);
 	 }
 
 }

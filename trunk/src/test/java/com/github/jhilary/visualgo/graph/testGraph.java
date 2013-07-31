@@ -1,4 +1,4 @@
-package com.github.jhilary.visualgo.mincut;
+package com.github.jhilary.visualgo.graph;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
@@ -10,8 +10,10 @@ import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
 import com.github.jhilary.visualgo.graph.Edge;
+import com.github.jhilary.visualgo.graph.Graph;
 import com.github.jhilary.visualgo.graph.GraphException;
 import com.github.jhilary.visualgo.graph.UndirectedGraph;
+import com.github.jhilary.visualgo.mincut.DataReader;
 
 import static org.junit.Assert.assertThat; 
 import static org.hamcrest.CoreMatchers.*;
@@ -62,7 +64,7 @@ public class testGraph {
 				     "4 1 3";
 		 
 		InputStream is = new ByteArrayInputStream(str.getBytes());
-		UndirectedGraph g = new UndirectedGraph(DataReader.readGraph(is, " "));
+		Graph g = new UndirectedGraph(DataReader.readGraph(is, " "));
 		
 		Edge e = g.getEdges().getFirst();
 		
