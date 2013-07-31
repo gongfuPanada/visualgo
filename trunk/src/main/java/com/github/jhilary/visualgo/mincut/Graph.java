@@ -79,13 +79,10 @@ public class Graph implements Cloneable{
 		Node nodeTo = edge.getSecond();
 		removeEdge(edge);
 		if(nodeFrom != nodeTo) {
-			for(Edge e : nodeFrom.getEdges()){
-				e.replace(nodeFrom, nodeTo);
-			}
+			nodeTo.addEdges(nodeFrom.getEdges());
 			for(Edge e : nodeTo.getEdges()){
 				e.replace(nodeFrom, nodeTo);
 			}
-			nodeTo.addEdges(nodeFrom.getEdges());
 			nodes.remove(nodeFrom.getLabel());
 		}
 	}
