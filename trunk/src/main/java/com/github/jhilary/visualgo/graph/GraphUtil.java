@@ -28,7 +28,7 @@ public class GraphUtil {
 		UndirectedGraph workGraph;
 		int min = Integer.MAX_VALUE;
 		long startTime = System.nanoTime();
-		for(int i = 0 ; i < 10000; i++){
+		for(int i = 0 ; i < 1000; i++){
 			workGraph = new UndirectedGraph(graph);
 			int res = minCutIteration(workGraph);
 			if(res < min){
@@ -37,7 +37,7 @@ public class GraphUtil {
 		}
 		System.out.println("Mincut value: " + min);
 
-		System.out.println("Time for 10000 iterations: " + (((System.nanoTime() - startTime))/1000000000));
+		System.out.println("Time for 1000 iterations: " + (((System.nanoTime() - startTime))/1000000000));
 		return min;
 
 	 }
