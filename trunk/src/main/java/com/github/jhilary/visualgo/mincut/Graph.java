@@ -5,7 +5,7 @@ import java.util.Iterator;
 import java.util.LinkedList;
 
 public class Graph implements Cloneable{
-	HashMap<Integer, Node> nodes = new HashMap<Integer, Node>();
+	HashMap<Label, Node> nodes = new HashMap<Label, Node>();
 	LinkedList<Edge> edges = new LinkedList<Edge>();
 	
 	public Graph() {}
@@ -27,12 +27,20 @@ public class Graph implements Cloneable{
 	}
 	
 	public void addNode(Integer label){
+		addNode(new Label(label));
+	}
+	
+	public void addNode(Label label){
 		if (!nodes.containsKey(label)){
 			nodes.put(label, new Node(label));
 		}
 	}
 	
 	public void addEdge(Integer from, Integer to) throws GraphException{
+		addEdge(new Label(from), new Label(to));
+	}
+	
+	public void addEdge(Label from, Label to) throws GraphException{
 		Node nodeFrom = nodes.get(from);
 		Node nodeTo = nodes.get(to);
 		if(nodeFrom == null || nodeTo == null){
@@ -58,7 +66,7 @@ public class Graph implements Cloneable{
 		return edges;
 	}
 	
-	public HashMap<Integer, Node> getNodes(){
+	public HashMap<Label, Node> getNodes(){
 		return nodes;
 	}
 	

@@ -1,21 +1,19 @@
 package com.github.jhilary.visualgo.mincut;
 
 import java.util.ArrayList;
-import java.util.LinkedList;
-
 
 public class Node implements Comparable<Node>{
-	private Integer label;
+	private Label label;
 	private ArrayList<Edge> edges = new ArrayList<Edge>();
 	
-	public Node(Integer label){
+	public Node(Label label){
 		this.label = label;
 	}
-	public Integer getLabel(){
+	public Label getLabel(){
 		return label;
 	}
 	
-	public void setLabel(Integer label){
+	public void setLabel(Label label){
 		this.label = label;
 	}
 	
@@ -44,19 +42,5 @@ public class Node implements Comparable<Node>{
 	public String toString(){
 		return edges.toString();
 	}
-	
-//	@Override
-//	public boolean equals(Object o){
-//
-//		if(o instanceof Node){
-//			return label.equals(((Node) o).getLabel());
-//		}
-//		return false;
-//	}
-	
-//	@Override
-//	public int hashCode(){
-//		return label.hashCode();
-//	}
 	
 }
