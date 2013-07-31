@@ -39,39 +39,4 @@ public class Edge implements Comparable<Edge>{
 		int firstCompare = this.getFirst().compareTo(edge.getFirst());
 		return firstCompare != 0 ? firstCompare : this.getSecond().compareTo(edge.getSecond()); 
 	}
-	
-//	@Override
-//	public boolean equals(Object o){
-//
-//		if(o instanceof Edge){
-//			Edge e = (Edge)o;
-//			if(this.getFirst().equals(e.getFirst()) && this.getSecond().equals(e.getSecond())){
-//				return true;
-//			}
-//			if(this.getFirst().equals(e.getSecond()) && this.getSecond().equals(e.getFirst())){
-//				return true;
-//			}
-//		}
-//		return false;
-//	}
-	
-//	@Override
-//	public boolean equals(Object o){
-//
-//		if(o instanceof Edge){
-//			Edge e = (Edge)o;
-//			if(this.getFirst().equals(e.getFirst()) && this.getSecond().equals(e.getSecond())){
-//				return true;
-//			}
-//			if(this.getFirst().equals(e.getSecond()) && this.getSecond().equals(e.getFirst())){
-//				return true;
-//			}
-//		}
-//		return false;
-//	}
-//	
-//	@Override
-//	public int hashCode(){
-//		return node1.hashCode()+node2.hashCode();
-//	}
 }
