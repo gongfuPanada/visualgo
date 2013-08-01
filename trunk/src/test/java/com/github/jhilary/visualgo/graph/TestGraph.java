@@ -20,7 +20,7 @@ import static org.hamcrest.CoreMatchers.*;
 
 
 @RunWith(JUnit4.class)
-public class testGraph {
+public class TestGraph {
 	
 	@Test
 	public void testGraphConstruction() throws GraphException{
