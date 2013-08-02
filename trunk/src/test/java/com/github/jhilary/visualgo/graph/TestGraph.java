@@ -1,7 +1,5 @@
 package com.github.jhilary.visualgo.graph;
 
-import java.io.ByteArrayInputStream;
-import java.io.InputStream;
 import java.util.Collections;
 import java.util.Iterator;
 
@@ -9,9 +7,8 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
-import com.github.jhilary.visualgo.dao.url.UrlGraphDao;
+import com.github.jhilary.dao.string.StringGraphDao;
 import com.github.jhilary.visualgo.graph.Edge;
-import com.github.jhilary.visualgo.graph.Graph;
 import com.github.jhilary.visualgo.graph.GraphException;
 import com.github.jhilary.visualgo.graph.UndirectedGraph;
 
@@ -28,10 +25,11 @@ public class TestGraph {
 				   	 "1 2 3 4\n" +
 				     "2 1 3\n" +
 				   	 "3 1 2 4\n" +
-				     "4 1 3";
-	 
-		InputStream is = new ByteArrayInputStream(str.getBytes());
-		UndirectedGraph g = new UndirectedGraph(UrlGraphDao.readGraph(is, " "));
+				     "4 1 3";	 
+		StringGraphDao graphDao = new StringGraphDao();
+		graphDao.setString(str);
+		graphDao.setDelimiter(" ");
+		UndirectedGraph g = new UndirectedGraph(graphDao.readGraph());
 		Collections.sort(g.getEdges());
 		assertThat(g.getEdges().toString(), is("[[1,2], [1,3], [1,4], [2,3], [3,4]]"));
 		assertThat(g.getNodes().toString(), is("{1=[[1,2], [1,3], [1,4]], 2=[[1,2], [2,3]], 3=[[1,3], [2,3], [3,4]], 4=[[1,4], [3,4]]}"));
@@ -45,15 +43,17 @@ public class TestGraph {
 				   	 "3 1 2 4\n" +
 				     "4 1 3";
 		 
-		InputStream is = new ByteArrayInputStream(str.getBytes());
-		UndirectedGraph g = new UndirectedGraph(UrlGraphDao.readGraph(is, " "));
+		StringGraphDao graphDao = new StringGraphDao();
+		graphDao.setString(str);
+		graphDao.setDelimiter(" ");
+		UndirectedGraph g = new UndirectedGraph(graphDao.readGraph());
 		Edge e = g.getEdges().getFirst();
 		g.removeEdge(e);
 		
 		assertThat(g.getEdges().contains(e), is(false));
 		assertThat(e.getFirst().getEdges().contains(e), is(false));
 		assertThat(e.getSecond().getEdges().contains(e), is(false));
-			}
+	}
 	
 	@Test
 	public void testMergeEdge() throws GraphException{
@@ -63,8 +63,10 @@ public class TestGraph {
 				   	 "3 1 2 4\n" +
 				     "4 1 3";
 		 
-		InputStream is = new ByteArrayInputStream(str.getBytes());
-		Graph g = new UndirectedGraph(UrlGraphDao.readGraph(is, " "));
+		StringGraphDao graphDao = new StringGraphDao();
+		graphDao.setString(str);
+		graphDao.setDelimiter(" ");
+		UndirectedGraph g = new UndirectedGraph(graphDao.readGraph());
 		
 		Edge e = g.getEdges().getFirst();
 		

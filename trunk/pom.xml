@@ -43,7 +43,16 @@
 		<groupId>com.google.guava</groupId>
 		<artifactId>guava</artifactId>
 		<version>14.0.1</version>
-	</dependency>       
+	</dependency> 
+	
+	<!--  Spring dependencies -->     
+	
+	<dependency>
+		<groupId>org.springframework</groupId>
+		<artifactId>spring-context</artifactId>
+		<version>3.2.3.RELEASE</version>
+	</dependency>
+
   </dependencies>
   
 </project>

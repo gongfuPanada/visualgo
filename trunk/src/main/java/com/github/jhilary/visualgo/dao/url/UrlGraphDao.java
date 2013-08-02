@@ -3,23 +3,40 @@ package com.github.jhilary.visualgo.dao.url;
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.net.URL;
 import java.nio.charset.Charset;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedList;
 
-public class UrlGraphDao {
+import org.springframework.core.io.Resource;
+
+import com.github.jhilary.visualgo.dao.GraphDao;
+
+public class UrlGraphDao implements GraphDao{
 	
-	public static HashMap<Integer, LinkedList<Integer>> readGraph(InputStream stream, String delimiter){
+	private Resource urlResource;
+	private String	 delimiter;
+	
+	public void setUrl(Resource urlResource) {
+		this.urlResource = urlResource;
+	}
+	
+	public void setDelimiter(String delimiter) {
+		this.delimiter = delimiter;
+	}
+	
+	@Override
+	public HashMap<Integer, LinkedList<Integer>> readGraph(){
 		HashMap<Integer, LinkedList<Integer>> result = new HashMap<Integer, LinkedList<Integer>>();
 		LinkedList<Integer> l;
 		String line = "";
 		BufferedReader br = null;
 		try{
-			br = new BufferedReader(new InputStreamReader(stream, Charset.forName("UTF-8")));
+			URL url = urlResource.getURL();
+			br = new BufferedReader(new InputStreamReader(url.openStream(), Charset.forName("UTF-8")));
 			while ((line = br.readLine()) != null){
 				l = new LinkedList<Integer>();
 				LinkedList<String> parsedLine = new LinkedList<String>(Arrays.asList(line.split(delimiter)));
