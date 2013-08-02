@@ -1,10 +1,14 @@
-package com.github.jhilary.visualgo.graph;
+package com.github.jhilary.visualgo.graph.formater;
 
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
+
+import com.github.jhilary.visualgo.graph.Graph;
+import com.github.jhilary.visualgo.graph.exception.GraphException;
+import com.github.jhilary.visualgo.graph.factory.GraphFactory;
 
 public class NodeGraphFormater implements GraphFormater{
 	private String delimiter;

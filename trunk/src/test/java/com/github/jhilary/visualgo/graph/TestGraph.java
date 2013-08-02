@@ -7,9 +7,11 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
-import com.github.jhilary.visualgo.dao.string.StringGraphDao;
 import com.github.jhilary.visualgo.graph.Edge;
-import com.github.jhilary.visualgo.graph.GraphException;
+import com.github.jhilary.visualgo.graph.dao.StringGraphDao;
+import com.github.jhilary.visualgo.graph.exception.GraphException;
+import com.github.jhilary.visualgo.graph.factory.UndirectedGraphFactory;
+import com.github.jhilary.visualgo.graph.formater.NodeGraphFormater;
 
 import static org.junit.Assert.assertThat; 
 import static org.hamcrest.CoreMatchers.*;

@@ -3,6 +3,8 @@ package com.github.jhilary.visualgo.graph;
 import java.util.HashMap;
 import java.util.LinkedList;
 
+import com.github.jhilary.visualgo.graph.exception.GraphException;
+
 public abstract class Graph{
 	HashMap<Label, Node> nodes = new HashMap<Label, Node>();
 	LinkedList<Edge> edges = new LinkedList<Edge>();

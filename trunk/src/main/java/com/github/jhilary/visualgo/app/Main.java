@@ -1,10 +1,10 @@
-package com.github.jhilary.visualgo.mincut;
+package com.github.jhilary.visualgo.app;
 
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import com.github.jhilary.visualgo.dao.GraphDao;
 import com.github.jhilary.visualgo.graph.Graph;
-import com.github.jhilary.visualgo.graph.GraphException;
+import com.github.jhilary.visualgo.graph.dao.GraphDao;
+import com.github.jhilary.visualgo.graph.exception.GraphException;
 
 public class Main {
 

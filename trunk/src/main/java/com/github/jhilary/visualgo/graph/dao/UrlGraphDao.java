@@ -1,4 +1,4 @@
-package com.github.jhilary.visualgo.dao.url;
+package com.github.jhilary.visualgo.graph.dao;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
@@ -9,10 +9,9 @@ import java.nio.charset.Charset;
 
 import org.springframework.core.io.Resource;
 
-import com.github.jhilary.visualgo.dao.GraphDao;
 import com.github.jhilary.visualgo.graph.Graph;
-import com.github.jhilary.visualgo.graph.GraphException;
-import com.github.jhilary.visualgo.graph.GraphFormater;
+import com.github.jhilary.visualgo.graph.exception.GraphException;
+import com.github.jhilary.visualgo.graph.formater.GraphFormater;
 
 public class UrlGraphDao implements GraphDao{
 	

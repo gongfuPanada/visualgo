@@ -1,7 +1,11 @@
-package com.github.jhilary.visualgo.graph;
+package com.github.jhilary.visualgo.graph.factory;
 
 import java.util.HashMap;
 import java.util.LinkedList;
+
+import com.github.jhilary.visualgo.graph.Graph;
+import com.github.jhilary.visualgo.graph.UndirectedGraph;
+import com.github.jhilary.visualgo.graph.exception.GraphException;
 
 public class UndirectedGraphFactory extends GraphFactory{
 

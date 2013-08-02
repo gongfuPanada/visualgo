@@ -1,4 +1,4 @@
-package com.github.jhilary.visualgo.mincut;
+package com.github.jhilary.visualgo.graph;
 
 import static org.junit.Assert.assertEquals;
 
@@ -12,11 +12,11 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
 
-import com.github.jhilary.visualgo.dao.string.StringGraphDao;
 import com.github.jhilary.visualgo.graph.Graph;
-import com.github.jhilary.visualgo.graph.GraphException;
-import com.github.jhilary.visualgo.graph.NodeGraphFormater;
-import com.github.jhilary.visualgo.graph.UndirectedGraphFactory;
+import com.github.jhilary.visualgo.graph.dao.StringGraphDao;
+import com.github.jhilary.visualgo.graph.exception.GraphException;
+import com.github.jhilary.visualgo.graph.factory.UndirectedGraphFactory;
+import com.github.jhilary.visualgo.graph.formater.NodeGraphFormater;
 
 @RunWith(value = Parameterized.class)
 public class TestMinCut {

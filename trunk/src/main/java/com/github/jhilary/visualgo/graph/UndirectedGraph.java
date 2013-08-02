@@ -5,6 +5,8 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedList;
 
+import com.github.jhilary.visualgo.graph.exception.GraphException;
+
 
 public class UndirectedGraph extends Graph{
 	
