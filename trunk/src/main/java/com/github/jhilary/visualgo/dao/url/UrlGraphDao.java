@@ -11,50 +11,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedList;
 
-import com.google.common.primitives.Ints;
-
-
 public class UrlGraphDao {
-
-	public static int[] readURL(InputStream stream){
-		LinkedList<Integer> l = new LinkedList<Integer>();
-		String line = "";
-		BufferedReader br = null;
-		try{
-			br = new BufferedReader(new InputStreamReader(stream, Charset.forName("UTF-8")));
-			while ((line = br.readLine()) != null){
-				l.add(Integer.valueOf(line));
-			}
-			br.close();
-		} catch (FileNotFoundException e) {
-			System.out.println("File not found by this URI");
-			System.exit(1);
-		} catch (IOException e) {
-			System.out.println("Failed read file content");
-			System.exit(1);
-		}
-		return Ints.toArray(l);
-	}
-	
-	public static String readURLtoString(InputStream stream){
-		String line = "";
-		String result = "";
-		BufferedReader br = null;
-		try{
-			br = new BufferedReader(new InputStreamReader(stream, Charset.forName("UTF-8")));
-			while ((line = br.readLine()) != null){
-				result += line+"\n";
-			}
-			br.close();
-		} catch (FileNotFoundException e) {
-			System.out.println("File not found by this URI");
-			System.exit(1);
-		} catch (IOException e) {
-			System.out.println("Failed read file content");
-			System.exit(1);
-		}
-		return result;
-	}
 	
 	public static HashMap<Integer, LinkedList<Integer>> readGraph(InputStream stream, String delimiter){
 		HashMap<Integer, LinkedList<Integer>> result = new HashMap<Integer, LinkedList<Integer>>();
