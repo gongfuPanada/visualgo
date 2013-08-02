@@ -14,7 +14,7 @@ import java.util.LinkedList;
 import com.google.common.primitives.Ints;
 
 
-public class DataReader {
+public class GraphDao {
 
 	public static int[] readURL(InputStream stream){
 		LinkedList<Integer> l = new LinkedList<Integer>();

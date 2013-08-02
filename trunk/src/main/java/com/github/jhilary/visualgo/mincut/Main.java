@@ -6,7 +6,7 @@ import java.net.URL;
 import java.util.HashMap;
 import java.util.LinkedList;
 
-import com.github.jhilary.visualgo.dao.DataReader;
+import com.github.jhilary.visualgo.dao.GraphDao;
 import com.github.jhilary.visualgo.graph.GraphException;
 import com.github.jhilary.visualgo.graph.GraphUtil;
 import com.github.jhilary.visualgo.graph.UndirectedGraph;
@@ -16,7 +16,7 @@ public class Main {
 	public static void main(String[] args) {
 		try {
 			URL url3 = new URL("http://spark-public.s3.amazonaws.com/algo1/programming_prob/kargerMinCut.txt");
-			HashMap<Integer, LinkedList<Integer>> graphData = DataReader.readGraph(url3.openStream(), "\t");
+			HashMap<Integer, LinkedList<Integer>> graphData = GraphDao.readGraph(url3.openStream(), "\t");
 			UndirectedGraph graph = new UndirectedGraph(graphData);
 			System.out.println("Data downloaded");
 			System.out.println(GraphUtil.minCut(graph));
