@@ -1,4 +1,4 @@
-package com.github.jhilary.dao.string;
+package com.github.jhilary.visualgo.dao.string;
 
 import java.util.Arrays;
 import java.util.HashMap;

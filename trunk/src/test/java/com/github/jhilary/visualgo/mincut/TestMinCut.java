@@ -12,7 +12,7 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
 
-import com.github.jhilary.dao.string.StringGraphDao;
+import com.github.jhilary.visualgo.dao.string.StringGraphDao;
 import com.github.jhilary.visualgo.graph.GraphException;
 import com.github.jhilary.visualgo.graph.GraphUtil;
 import com.github.jhilary.visualgo.graph.UndirectedGraph;

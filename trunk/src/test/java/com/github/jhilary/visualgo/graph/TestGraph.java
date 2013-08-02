@@ -7,7 +7,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
-import com.github.jhilary.dao.string.StringGraphDao;
+import com.github.jhilary.visualgo.dao.string.StringGraphDao;
 import com.github.jhilary.visualgo.graph.Edge;
 import com.github.jhilary.visualgo.graph.GraphException;
 import com.github.jhilary.visualgo.graph.UndirectedGraph;

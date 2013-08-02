@@ -2,13 +2,10 @@ package com.github.jhilary.visualgo.mincut;
 
 import java.io.IOException;
 import java.net.MalformedURLException;
-import java.net.URL;
-import java.util.HashMap;
-import java.util.LinkedList;
 
-import org.springframework.core.io.UrlResource;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import com.github.jhilary.visualgo.dao.url.UrlGraphDao;
+import com.github.jhilary.visualgo.dao.GraphDao;
 import com.github.jhilary.visualgo.graph.GraphException;
 import com.github.jhilary.visualgo.graph.GraphUtil;
 import com.github.jhilary.visualgo.graph.UndirectedGraph;
@@ -17,12 +14,10 @@ public class Main {
 
 	public static void main(String[] args) {
 		try {
-			URL url3 = new URL("http://spark-public.s3.amazonaws.com/algo1/programming_prob/kargerMinCut.txt");
-			UrlGraphDao g = new UrlGraphDao();
-			g.setUrl(new UrlResource(url3));
-			g.setDelimiter("\t");
-			HashMap<Integer, LinkedList<Integer>> graphData = g.readGraph();
-			UndirectedGraph graph = new UndirectedGraph(graphData);
+			ClassPathXmlApplicationContext appContext = new ClassPathXmlApplicationContext("applicationContext.xml");
+			GraphDao graphDao = (GraphDao) appContext.getBean("graphDao");
+			appContext.close();
+			UndirectedGraph graph = new UndirectedGraph(graphDao.readGraph());
 			System.out.println("Data downloaded");
 			System.out.println(GraphUtil.minCut(graph));
 		} catch (MalformedURLException e) {

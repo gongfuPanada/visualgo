@@ -20,7 +20,7 @@ public class UrlGraphDao implements GraphDao{
 	private Resource urlResource;
 	private String	 delimiter;
 	
-	public void setUrl(Resource urlResource) {
+	public void setUrlResource(Resource urlResource) {
 		this.urlResource = urlResource;
 	}
 	
