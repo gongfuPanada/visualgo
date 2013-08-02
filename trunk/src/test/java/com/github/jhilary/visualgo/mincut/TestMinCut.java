@@ -15,7 +15,7 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
 
-import com.github.jhilary.visualgo.dao.GraphDao;
+import com.github.jhilary.visualgo.dao.url.UrlGraphDao;
 import com.github.jhilary.visualgo.graph.GraphException;
 import com.github.jhilary.visualgo.graph.GraphUtil;
 import com.github.jhilary.visualgo.graph.UndirectedGraph;
@@ -135,7 +135,7 @@ public class TestMinCut {
 	@Test
 	public void testMinCut() throws IOException, GraphException{
 		InputStream is = new ByteArrayInputStream(this.string.getBytes());
-		HashMap<Integer, LinkedList<Integer>> graphData = GraphDao.readGraph(is, " ");
+		HashMap<Integer, LinkedList<Integer>> graphData = UrlGraphDao.readGraph(is, " ");
 		is.close();
 		int min = GraphUtil.minCut(new UndirectedGraph(graphData));
 		assertEquals("Mincut doesn't converge right:", this.mincuts, min);

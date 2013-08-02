@@ -1,4 +1,4 @@
-package com.github.jhilary.visualgo.dao;
+package com.github.jhilary.visualgo.dao.url;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
@@ -14,7 +14,7 @@ import java.util.LinkedList;
 import com.google.common.primitives.Ints;
 
 
-public class GraphDao {
+public class UrlGraphDao {
 
 	public static int[] readURL(InputStream stream){
 		LinkedList<Integer> l = new LinkedList<Integer>();
