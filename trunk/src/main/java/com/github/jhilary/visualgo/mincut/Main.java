@@ -6,6 +6,7 @@ import java.net.URL;
 import java.util.HashMap;
 import java.util.LinkedList;
 
+import com.github.jhilary.visualgo.dao.DataReader;
 import com.github.jhilary.visualgo.graph.GraphException;
 import com.github.jhilary.visualgo.graph.GraphUtil;
 import com.github.jhilary.visualgo.graph.UndirectedGraph;

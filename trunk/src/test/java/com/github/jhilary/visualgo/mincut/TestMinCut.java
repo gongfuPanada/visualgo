@@ -15,6 +15,7 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
 
+import com.github.jhilary.visualgo.dao.DataReader;
 import com.github.jhilary.visualgo.graph.GraphException;
 import com.github.jhilary.visualgo.graph.GraphUtil;
 import com.github.jhilary.visualgo.graph.UndirectedGraph;

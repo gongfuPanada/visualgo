@@ -9,11 +9,11 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
+import com.github.jhilary.visualgo.dao.DataReader;
 import com.github.jhilary.visualgo.graph.Edge;
 import com.github.jhilary.visualgo.graph.Graph;
 import com.github.jhilary.visualgo.graph.GraphException;
 import com.github.jhilary.visualgo.graph.UndirectedGraph;
-import com.github.jhilary.visualgo.mincut.DataReader;
 
 import static org.junit.Assert.assertThat; 
 import static org.hamcrest.CoreMatchers.*;

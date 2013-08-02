@@ -1,4 +1,4 @@
-package com.github.jhilary.visualgo.mincut;
+package com.github.jhilary.visualgo.dao;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
