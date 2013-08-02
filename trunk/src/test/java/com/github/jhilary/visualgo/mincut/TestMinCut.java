@@ -13,9 +13,10 @@ import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
 
 import com.github.jhilary.visualgo.dao.string.StringGraphDao;
+import com.github.jhilary.visualgo.graph.Graph;
 import com.github.jhilary.visualgo.graph.GraphException;
-import com.github.jhilary.visualgo.graph.GraphUtil;
-import com.github.jhilary.visualgo.graph.UndirectedGraph;
+import com.github.jhilary.visualgo.graph.NodeGraphFormater;
+import com.github.jhilary.visualgo.graph.UndirectedGraphFactory;
 
 @RunWith(value = Parameterized.class)
 public class TestMinCut {
@@ -131,10 +132,15 @@ public class TestMinCut {
 	 
 	@Test
 	public void testMinCut() throws IOException, GraphException{
+		UndirectedGraphFactory graphFactory = new UndirectedGraphFactory();
+		NodeGraphFormater graphFormater = new NodeGraphFormater();
+		graphFormater.setDelimiter(" ");
+		graphFormater.setGraphFactory(graphFactory);
 		StringGraphDao graphDao = new StringGraphDao();
 		graphDao.setString(this.string);
-		graphDao.setDelimiter(" ");
-		int min = GraphUtil.minCut(new UndirectedGraph(graphDao.readGraph()));
+		graphDao.setGraphFormater(graphFormater);
+		Graph g = graphDao.readGraph();
+		int min = g.minCut();
 		assertEquals("Mincut doesn't converge right:", this.mincuts, min);
 	 }
 

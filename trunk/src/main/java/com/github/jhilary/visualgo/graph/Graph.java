@@ -9,7 +9,9 @@ public abstract class Graph{
 	
 	public Graph() {}
 	
-	public Graph(Graph g){
+	public Graph(HashMap<Integer, LinkedList<Integer>> nodeGraph) {};
+		
+	public Graph (Graph g){
 		for (Node node: g.getNodes().values()) {
 			this.addNode(node.getLabel());
 		}
@@ -19,6 +21,7 @@ public abstract class Graph{
 			this.addEdge(from, to);
 		}
 	}
+	
 	
 	public Graph(HashMap<Label, Node> nodes, LinkedList<Edge> edges){
 		this.nodes = nodes;
@@ -43,4 +46,6 @@ public abstract class Graph{
 	abstract void mergeEdge(Edge edge);
 	abstract void addEdge(Node node1, Node node2);
 	
+	public abstract int minCut() throws GraphException;
+
 }

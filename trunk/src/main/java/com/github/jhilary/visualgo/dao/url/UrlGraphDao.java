@@ -6,46 +6,38 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.URL;
 import java.nio.charset.Charset;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.LinkedList;
 
 import org.springframework.core.io.Resource;
 
 import com.github.jhilary.visualgo.dao.GraphDao;
+import com.github.jhilary.visualgo.graph.Graph;
+import com.github.jhilary.visualgo.graph.GraphException;
+import com.github.jhilary.visualgo.graph.GraphFormater;
 
 public class UrlGraphDao implements GraphDao{
 	
 	private Resource urlResource;
-	private String	 delimiter;
+	private GraphFormater graphFormater;
+
 	
 	public void setUrlResource(Resource urlResource) {
 		this.urlResource = urlResource;
 	}
 	
-	public void setDelimiter(String delimiter) {
-		this.delimiter = delimiter;
+	public void setGraphFormater(GraphFormater graphFormater) {
+		this.graphFormater = graphFormater;
 	}
-	
+
 	@Override
-	public HashMap<Integer, LinkedList<Integer>> readGraph(){
-		HashMap<Integer, LinkedList<Integer>> result = new HashMap<Integer, LinkedList<Integer>>();
-		LinkedList<Integer> l;
+	public Graph readGraph() throws GraphException {
+		String result = "";
 		String line = "";
 		BufferedReader br = null;
 		try{
 			URL url = urlResource.getURL();
 			br = new BufferedReader(new InputStreamReader(url.openStream(), Charset.forName("UTF-8")));
 			while ((line = br.readLine()) != null){
-				l = new LinkedList<Integer>();
-				LinkedList<String> parsedLine = new LinkedList<String>(Arrays.asList(line.split(delimiter)));
-				Iterator<String> iter = parsedLine.iterator();
-				int key = Integer.valueOf(iter.next());
-				while(iter.hasNext()){
-					l.add(Integer.valueOf(iter.next()));
-				}
-				result.put(key, l);
+				result += line + "\n";
 			}
 			br.close();
 		} catch (FileNotFoundException e) {
@@ -55,7 +47,7 @@ public class UrlGraphDao implements GraphDao{
 			System.out.println("Failed read file content");
 			System.exit(1);
 		}
-		return result;
+		return graphFormater.format(result);
 	}
 
 }

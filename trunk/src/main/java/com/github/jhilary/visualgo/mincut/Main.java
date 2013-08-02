@@ -1,14 +1,10 @@
 package com.github.jhilary.visualgo.mincut;
 
-import java.io.IOException;
-import java.net.MalformedURLException;
-
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.github.jhilary.visualgo.dao.GraphDao;
+import com.github.jhilary.visualgo.graph.Graph;
 import com.github.jhilary.visualgo.graph.GraphException;
-import com.github.jhilary.visualgo.graph.GraphUtil;
-import com.github.jhilary.visualgo.graph.UndirectedGraph;
 
 public class Main {
 
@@ -17,15 +13,14 @@ public class Main {
 			ClassPathXmlApplicationContext appContext = new ClassPathXmlApplicationContext("applicationContext.xml");
 			GraphDao graphDao = (GraphDao) appContext.getBean("graphDao");
 			appContext.close();
-			UndirectedGraph graph = new UndirectedGraph(graphDao.readGraph());
+			Graph graph = graphDao.readGraph();
+			
 			System.out.println("Data downloaded");
-			System.out.println(GraphUtil.minCut(graph));
-		} catch (MalformedURLException e) {
-			System.out.println("MalFormed URL");
-			System.exit(1);
-		} catch (IOException e) {
-			System.out.println("Cannot read data by URL");
-			System.exit(1);
+			
+			long startTime = System.nanoTime();
+			System.out.println("Mincut value: " + graph.minCut());
+			System.out.println("Time for 1000 iterations: " + (((System.nanoTime() - startTime))/1000000000));
+			
 		} catch (GraphException e) {
 			System.out.println("MinCut problems: " + e.getMessage());
 			System.exit(1);

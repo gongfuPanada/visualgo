@@ -6,9 +6,19 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans 
 		http://www.springframework.org/schema/beans/spring-beans-3.1.xsd">
 		
+	<bean id="graphFactory" 
+	   	  class="com.github.jhilary.visualgo.graph.UndirectedGraphFactory">
+	</bean>
+	
+	<bean id="graphFormater" 
+		  class="com.github.jhilary.visualgo.graph.NodeGraphFormater">
+	   	<property name="delimiter" value="\t"/>
+	   	<property name="graphFactory" ref="graphFactory"/>
+	</bean>
+		
 	<bean id="graphDao" 
-	   class="com.github.jhilary.visualgo.dao.url.UrlGraphDao">
+	   	class="com.github.jhilary.visualgo.dao.url.UrlGraphDao">
 		<property name="urlResource" value="http://spark-public.s3.amazonaws.com/algo1/programming_prob/kargerMinCut.txt"/>
-		<property name="delimiter"	 value="\t"/>
+		<property name="graphFormater" ref="graphFormater"/>
 	</bean>
 </beans>

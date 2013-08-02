@@ -10,7 +10,6 @@ import org.junit.runners.JUnit4;
 import com.github.jhilary.visualgo.dao.string.StringGraphDao;
 import com.github.jhilary.visualgo.graph.Edge;
 import com.github.jhilary.visualgo.graph.GraphException;
-import com.github.jhilary.visualgo.graph.UndirectedGraph;
 
 import static org.junit.Assert.assertThat; 
 import static org.hamcrest.CoreMatchers.*;
@@ -26,10 +25,14 @@ public class TestGraph {
 				     "2 1 3\n" +
 				   	 "3 1 2 4\n" +
 				     "4 1 3";	 
+		UndirectedGraphFactory graphFactory = new UndirectedGraphFactory();
+		NodeGraphFormater graphFormater = new NodeGraphFormater();
+		graphFormater.setDelimiter(" ");
+		graphFormater.setGraphFactory(graphFactory);
 		StringGraphDao graphDao = new StringGraphDao();
 		graphDao.setString(str);
-		graphDao.setDelimiter(" ");
-		UndirectedGraph g = new UndirectedGraph(graphDao.readGraph());
+		graphDao.setGraphFormater(graphFormater);
+		Graph g = graphDao.readGraph();
 		Collections.sort(g.getEdges());
 		assertThat(g.getEdges().toString(), is("[[1,2], [1,3], [1,4], [2,3], [3,4]]"));
 		assertThat(g.getNodes().toString(), is("{1=[[1,2], [1,3], [1,4]], 2=[[1,2], [2,3]], 3=[[1,3], [2,3], [3,4]], 4=[[1,4], [3,4]]}"));
@@ -43,10 +46,14 @@ public class TestGraph {
 				   	 "3 1 2 4\n" +
 				     "4 1 3";
 		 
+		UndirectedGraphFactory graphFactory = new UndirectedGraphFactory();
+		NodeGraphFormater graphFormater = new NodeGraphFormater();
+		graphFormater.setDelimiter(" ");
+		graphFormater.setGraphFactory(graphFactory);
 		StringGraphDao graphDao = new StringGraphDao();
 		graphDao.setString(str);
-		graphDao.setDelimiter(" ");
-		UndirectedGraph g = new UndirectedGraph(graphDao.readGraph());
+		graphDao.setGraphFormater(graphFormater);
+		Graph g = graphDao.readGraph();
 		Edge e = g.getEdges().getFirst();
 		g.removeEdge(e);
 		
@@ -63,11 +70,14 @@ public class TestGraph {
 				   	 "3 1 2 4\n" +
 				     "4 1 3";
 		 
+		UndirectedGraphFactory graphFactory = new UndirectedGraphFactory();
+		NodeGraphFormater graphFormater = new NodeGraphFormater();
+		graphFormater.setDelimiter(" ");
+		graphFormater.setGraphFactory(graphFactory);
 		StringGraphDao graphDao = new StringGraphDao();
 		graphDao.setString(str);
-		graphDao.setDelimiter(" ");
-		UndirectedGraph g = new UndirectedGraph(graphDao.readGraph());
-		
+		graphDao.setGraphFormater(graphFormater);
+		Graph g = graphDao.readGraph();
 		Edge e = g.getEdges().getFirst();
 		
 		g.mergeEdge(e);

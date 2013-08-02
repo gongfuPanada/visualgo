@@ -1,8 +1,8 @@
 package com.github.jhilary.visualgo.dao;
 
-import java.util.HashMap;
-import java.util.LinkedList;
+import com.github.jhilary.visualgo.graph.Graph;
+import com.github.jhilary.visualgo.graph.GraphException;
 
 public interface GraphDao {
-	HashMap<Integer, LinkedList<Integer>> readGraph();
+	public Graph readGraph() throws GraphException ;
 }
