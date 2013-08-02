@@ -11,17 +11,20 @@
 	</bean>	
 	
 	<bean id="graphFactory" 
-	   	  class="com.github.jhilary.visualgo.graph.factory.UndirectedGraphFactory">
+	   	  class="com.github.jhilary.visualgo.graph.factory.UndirectedGraphFactory"
+	   	  scope="singleton">
 	</bean>
 	
 	<bean id="graphFormater" 
-		  class="com.github.jhilary.visualgo.graph.formater.NodeGraphFormater">
+		  class="com.github.jhilary.visualgo.graph.formater.NodeGraphFormater"
+		  scope="singleton">
 	   	<property name="delimiter" value="\t"/>
 	   	<property name="graphFactory" ref="graphFactory"/>
 	</bean>
 		
 	<bean id="graphDao" 
-	   	class="com.github.jhilary.visualgo.graph.dao.UrlGraphDao">
+	   	class="com.github.jhilary.visualgo.graph.dao.UrlGraphDao"
+	   	scope="singleton">
 		<property name="urlResource" value="${data.url}"/>
 		<property name="graphFormater" ref="graphFormater"/>
 	</bean>
