@@ -28,12 +28,8 @@ public class TestGraph {
 				   	 "3 1 2 4\n" +
 				     "4 1 3";	 
 		UndirectedGraphFactory graphFactory = new UndirectedGraphFactory();
-		NodeGraphFormater graphFormater = new NodeGraphFormater();
-		graphFormater.setDelimiter(" ");
-		graphFormater.setGraphFactory(graphFactory);
-		StringGraphDao graphDao = new StringGraphDao();
-		graphDao.setString(str);
-		graphDao.setGraphFormater(graphFormater);
+		NodeGraphFormater graphFormater = new NodeGraphFormater(" ", graphFactory);
+		StringGraphDao graphDao = new StringGraphDao(str, graphFormater);
 		Graph g = graphDao.readGraph();
 		Collections.sort(g.getEdges());
 		assertThat(g.getEdges().toString(), is("[[1,2], [1,3], [1,4], [2,3], [3,4]]"));
@@ -49,12 +45,8 @@ public class TestGraph {
 				     "4 1 3";
 		 
 		UndirectedGraphFactory graphFactory = new UndirectedGraphFactory();
-		NodeGraphFormater graphFormater = new NodeGraphFormater();
-		graphFormater.setDelimiter(" ");
-		graphFormater.setGraphFactory(graphFactory);
-		StringGraphDao graphDao = new StringGraphDao();
-		graphDao.setString(str);
-		graphDao.setGraphFormater(graphFormater);
+		NodeGraphFormater graphFormater = new NodeGraphFormater(" ", graphFactory);
+		StringGraphDao graphDao = new StringGraphDao(str, graphFormater);
 		Graph g = graphDao.readGraph();
 		Edge e = g.getEdges().getFirst();
 		g.removeEdge(e);
@@ -73,12 +65,8 @@ public class TestGraph {
 				     "4 1 3";
 		 
 		UndirectedGraphFactory graphFactory = new UndirectedGraphFactory();
-		NodeGraphFormater graphFormater = new NodeGraphFormater();
-		graphFormater.setDelimiter(" ");
-		graphFormater.setGraphFactory(graphFactory);
-		StringGraphDao graphDao = new StringGraphDao();
-		graphDao.setString(str);
-		graphDao.setGraphFormater(graphFormater);
+		NodeGraphFormater graphFormater = new NodeGraphFormater(" ", graphFactory);
+		StringGraphDao graphDao = new StringGraphDao(str, graphFormater);
 		Graph g = graphDao.readGraph();
 		Edge e = g.getEdges().getFirst();
 		

@@ -9,6 +9,10 @@ public class StringGraphDao implements GraphDao {
 	private String 	string;
 	private GraphFormater graphFormater;
 	
+	public StringGraphDao(String string, GraphFormater graphFormater){
+		this.string = string;
+		this.graphFormater = graphFormater;
+	}
 	public void setString(String string) {
 		this.string = string;
 	}

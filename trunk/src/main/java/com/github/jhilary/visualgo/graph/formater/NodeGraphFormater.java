@@ -14,6 +14,11 @@ public class NodeGraphFormater implements GraphFormater{
 	private String delimiter;
 	private GraphFactory graphFactory;
 	
+	public NodeGraphFormater(String delimiter, GraphFactory graphFactory){
+		this.delimiter = delimiter;
+		this.graphFactory = graphFactory;
+	}
+	
 	public void setDelimiter(String delimiter) {
 		this.delimiter = delimiter;
 	}

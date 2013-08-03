@@ -133,12 +133,8 @@ public class TestMinCut {
 	@Test
 	public void testMinCut() throws IOException, GraphException{
 		UndirectedGraphFactory graphFactory = new UndirectedGraphFactory();
-		NodeGraphFormater graphFormater = new NodeGraphFormater();
-		graphFormater.setDelimiter(" ");
-		graphFormater.setGraphFactory(graphFactory);
-		StringGraphDao graphDao = new StringGraphDao();
-		graphDao.setString(this.string);
-		graphDao.setGraphFormater(graphFormater);
+		NodeGraphFormater graphFormater = new NodeGraphFormater(" ", graphFactory);
+		StringGraphDao graphDao = new StringGraphDao(this.string, graphFormater);
 		Graph g = graphDao.readGraph();
 		int min = g.minCut();
 		assertEquals("Mincut doesn't converge right:", this.mincuts, min);

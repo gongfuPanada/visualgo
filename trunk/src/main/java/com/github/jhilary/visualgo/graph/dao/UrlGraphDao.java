@@ -18,6 +18,10 @@ public class UrlGraphDao implements GraphDao{
 	private Resource urlResource;
 	private GraphFormater graphFormater;
 
+	public UrlGraphDao(Resource urlResource, GraphFormater graphFormater){
+		this.urlResource = urlResource;
+		this.graphFormater = graphFormater;
+	}
 	
 	public void setUrlResource(Resource urlResource) {
 		this.urlResource = urlResource;
