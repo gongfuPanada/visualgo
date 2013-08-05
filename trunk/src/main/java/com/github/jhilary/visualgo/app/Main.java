@@ -6,6 +6,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.core.io.UrlResource;
 
 import com.github.jhilary.visualgo.graph.Graph;
+import com.github.jhilary.visualgo.graph.algorithm.StrongConnectedComponents;
 import com.github.jhilary.visualgo.graph.dao.FileGraphDao;
 import com.github.jhilary.visualgo.graph.dao.GraphDao;
 import com.github.jhilary.visualgo.graph.dao.UrlGraphDao;
@@ -27,12 +28,14 @@ public class Main {
 			FileGraphDao dao = new FileGraphDao("/Users/ilariyabelova/SCC.txt", graphFormater);
 			long startTime = System.nanoTime();
 			System.out.println("Data start download");
-
 			Graph g = dao.readGraph();
+			System.out.println("Data end download");
+			
 			System.out.println(g.getNodes().get(1).getEdges().get(0));
+			StrongConnectedComponents algo = new StrongConnectedComponents(g);
+			algo.run();
 			//System.out.println(g.getEdges());
 			
-			System.out.println("Data end download");
 			//System.out.println("Mincut value: " + graph.minCut());
 			System.out.println("Time for 1000 iterations: " + (((System.nanoTime() - startTime))/1000000000));
 

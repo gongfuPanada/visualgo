@@ -2,9 +2,15 @@ package com.github.jhilary.visualgo.graph;
 
 public class Label implements Comparable<Label>{
 	private Integer value;
+	public boolean explored;
+	public Integer leader;
+	public Integer time;
 
 	public Label(int n){
 		this.value = n;
+		this.leader = n;
+		this.time = 0;
+		this.explored = false;
 	}
 
 	public int getValue(){
