@@ -18,23 +18,6 @@ public class UndirectedGraph extends Graph{
 		super(g);
 	}
 	
-	public UndirectedGraph(HashMap<Integer, LinkedList<Integer>> nodeGraph) throws GraphException{
-		super(new HashMap<Integer, Node>(), new LinkedList<Edge>());
-		Iterator<Integer> iter = nodeGraph.keySet().iterator();
-		while(iter.hasNext()){
-			Integer key = iter.next();
-			addNode(key);
-			Iterator<Integer> neighbours = nodeGraph.get(key).iterator();
-			while(neighbours.hasNext()){
-				Integer neighbour = neighbours.next();
-				addNode(neighbour);
-				if(key <= neighbour){
-					addEdge(key, neighbour);
-				} 
-			}
-		}
-	}
-	
 	public UndirectedGraph(LinkedList<Integer[]> edges) throws GraphException{
 		super(new HashMap<Integer, Node>(), new LinkedList<Edge>());
 		for(Integer[] edge: edges){
@@ -46,22 +29,12 @@ public class UndirectedGraph extends Graph{
 		}
 	}
 	
-//	@Override
-//	public void addNode(Integer label){
-//		addNode(new Label(label));
-//	}
-	
 	@Override
 	public void addNode(Integer label){
 		if (!nodes.containsKey(label)){
 			nodes.put(label, new Node(new Label(label)));
 		}
 	}
-	
-//	@Override
-//	public void addEdge(Integer from, Integer to) throws GraphException{
-//		addEdge(new Label(from), new Label(to));
-//	}
 	
 	@Override
 	public void addEdge(Integer from, Integer to) throws GraphException{

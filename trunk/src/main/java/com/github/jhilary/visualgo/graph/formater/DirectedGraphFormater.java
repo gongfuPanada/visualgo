@@ -1,8 +1,5 @@
 package com.github.jhilary.visualgo.graph.formater;
 
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -22,11 +19,10 @@ public class DirectedGraphFormater implements GraphFormater{
 	}
 	
 	@Override
-	public Graph format(String stringData) throws GraphException {
+	public Graph format(List<String> stringData) throws GraphException {
 		Integer[] l = new Integer[2];
 		LinkedList<Integer[]> result = new LinkedList<Integer[]>();
-		List<String> data = new LinkedList<String>(Arrays.asList(stringData.split("\n")));
-		for(String line: data){
+		for(String line: stringData){
 			l = new Integer[2];
 			String[] values = line.split(" ");
 			l[0] = Integer.valueOf(values[0]);

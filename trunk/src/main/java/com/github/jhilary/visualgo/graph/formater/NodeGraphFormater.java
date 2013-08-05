@@ -1,7 +1,6 @@
 package com.github.jhilary.visualgo.graph.formater;
 
 import java.util.Arrays;
-import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
@@ -28,19 +27,21 @@ public class NodeGraphFormater implements GraphFormater{
 	}
 	
 	@Override
-	public Graph format(String stringData) throws GraphException {
-		HashMap<Integer, LinkedList<Integer>> result = new HashMap<Integer, LinkedList<Integer>>();
-		LinkedList<Integer> l;
-		List<String> data = new LinkedList<String>(Arrays.asList(stringData.split("\n")));
-		for(String line: data){
-			l = new LinkedList<Integer>();
+	public Graph format(List<String> stringData) throws GraphException {
+		
+		LinkedList<Integer[]> result = new LinkedList<Integer[]>();
+		for(String line: stringData){
 			LinkedList<String> parsedLine = new LinkedList<String>(Arrays.asList(line.split(delimiter)));
 			Iterator<String> iter = parsedLine.iterator();
 			int key = Integer.valueOf(iter.next());
 			while(iter.hasNext()){
-				l.add(Integer.valueOf(iter.next()));
+				Integer[] i = new Integer[2];
+				i[0] = key;
+				i[1] = Integer.valueOf(iter.next());
+				if(i[0] <= i[1]){
+					result.add(i);
+				} 
 			}
-			result.put(key, l);
 		}
 		return this.graphFactory.create(result);
 	}

@@ -46,7 +46,8 @@ public class TestGraph {
 				   	 "2 3\n";	 
 		UndirectedGraphFactory graphFactory = new UndirectedGraphFactory();
 		DirectedGraphFormater graphFormater = new DirectedGraphFormater(graphFactory);
-		Graph g = graphFormater.format(str);
+		StringGraphDao dao = new StringGraphDao(str, graphFormater);
+		Graph g = dao.readGraph();
 		System.out.println(g.getNodes());
 		System.out.println(g.getEdges());
 

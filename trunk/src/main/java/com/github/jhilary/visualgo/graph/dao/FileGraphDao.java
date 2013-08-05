@@ -1,13 +1,15 @@
 package com.github.jhilary.visualgo.graph.dao;
 
-import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.IOException;
+import java.util.List;
 
 import com.github.jhilary.visualgo.graph.Graph;
 import com.github.jhilary.visualgo.graph.exception.GraphException;
 import com.github.jhilary.visualgo.graph.formater.GraphFormater;
+import com.google.common.base.Charsets;
+import com.google.common.io.Files;
 
 public class FileGraphDao implements GraphDao{
 	
@@ -25,15 +27,9 @@ public class FileGraphDao implements GraphDao{
 
 	@Override
 	public Graph readGraph() throws GraphException {
-		StringBuilder result = new StringBuilder();
-		String line = "";
-		BufferedReader br = null;
 		try{
-			br = new BufferedReader(new FileReader(fileName));
-			while ((line = br.readLine()) != null){
-				result.append(line + "\n");
-			}
-			br.close();
+			List<String> lines = Files.readLines(new File(fileName), Charsets.UTF_8);
+			return graphFormater.format(lines);
 		} catch (FileNotFoundException e) {
 			System.out.println("File not found by this URI");
 			System.exit(1);
@@ -41,7 +37,7 @@ public class FileGraphDao implements GraphDao{
 			System.out.println("Failed read file content");
 			System.exit(1);
 		}
-		return graphFormater.format(result.toString());
+		return null;
 	}
 
 }

@@ -1,5 +1,8 @@
 package com.github.jhilary.visualgo.graph.dao;
 
+import java.util.Arrays;
+import java.util.List;
+
 import com.github.jhilary.visualgo.graph.Graph;
 import com.github.jhilary.visualgo.graph.exception.GraphException;
 import com.github.jhilary.visualgo.graph.formater.GraphFormater;
@@ -23,6 +26,7 @@ public class StringGraphDao implements GraphDao {
 	
 	@Override
 	public Graph readGraph() throws GraphException{
-		return graphFormater.format(this.string);
+		List<String> text = Arrays.asList(string.split("\n"));
+		return graphFormater.format(text);
 	}
 }
