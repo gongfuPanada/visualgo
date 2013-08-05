@@ -11,6 +11,7 @@ import com.github.jhilary.visualgo.graph.Edge;
 import com.github.jhilary.visualgo.graph.dao.StringGraphDao;
 import com.github.jhilary.visualgo.graph.exception.GraphException;
 import com.github.jhilary.visualgo.graph.factory.UndirectedGraphFactory;
+import com.github.jhilary.visualgo.graph.formater.DirectedGraphFormater;
 import com.github.jhilary.visualgo.graph.formater.NodeGraphFormater;
 
 import static org.junit.Assert.assertThat; 
@@ -35,6 +36,21 @@ public class TestGraph {
 		assertThat(g.getEdges().toString(), is("[[1,2], [1,3], [1,4], [2,3], [3,4]]"));
 		assertThat(g.getNodes().toString(), is("{1=[[1,2], [1,3], [1,4]], 2=[[1,2], [2,3]], 3=[[1,3], [2,3], [3,4]], 4=[[1,4], [3,4]]}"));
 	}
+	
+	@Test
+	public void testDirectedGraphFormater() throws GraphException{
+		   String str = 
+				   	 "1 2\n" +
+				   	 "1 3\n" +
+				   	 "1 4\n" +
+				   	 "2 3\n";	 
+		UndirectedGraphFactory graphFactory = new UndirectedGraphFactory();
+		DirectedGraphFormater graphFormater = new DirectedGraphFormater(graphFactory);
+		Graph g = graphFormater.format(str);
+		System.out.println(g.getNodes());
+		System.out.println(g.getEdges());
+
+		}
 
 	@Test
 	public void testRemoveEdge() throws GraphException{

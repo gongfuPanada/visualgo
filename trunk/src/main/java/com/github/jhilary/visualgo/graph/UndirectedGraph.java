@@ -35,6 +35,17 @@ public class UndirectedGraph extends Graph{
 		}
 	}
 	
+	public UndirectedGraph(LinkedList<Integer[]> edges) throws GraphException{
+		super(new HashMap<Integer, Node>(), new LinkedList<Edge>());
+		for(Integer[] edge: edges){
+			Integer key = edge[0];
+			addNode(key);
+			Integer neighbour = edge[1];
+			addNode(neighbour);
+			addEdge(key, neighbour);
+		}
+	}
+	
 //	@Override
 //	public void addNode(Integer label){
 //		addNode(new Label(label));
