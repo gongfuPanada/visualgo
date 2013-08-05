@@ -13,7 +13,7 @@
 		</servlet-class>
 	</servlet>
 	<servlet-mapping>
-		<servlet-name>visualgo</servlet-name>
-		<url-pattern>/visualgo/*</url-pattern>
+		<servlet-name>main</servlet-name>
+		<url-pattern>/main/*</url-pattern>
 	</servlet-mapping>
 </web-app>
