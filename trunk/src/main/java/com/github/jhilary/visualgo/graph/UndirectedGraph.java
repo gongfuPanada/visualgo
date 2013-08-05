@@ -19,7 +19,7 @@ public class UndirectedGraph extends Graph{
 	}
 	
 	public UndirectedGraph(HashMap<Integer, LinkedList<Integer>> nodeGraph) throws GraphException{
-		super(new HashMap<Label, Node>(), new LinkedList<Edge>());
+		super(new HashMap<Integer, Node>(), new LinkedList<Edge>());
 		Iterator<Integer> iter = nodeGraph.keySet().iterator();
 		while(iter.hasNext()){
 			Integer key = iter.next();
@@ -35,25 +35,25 @@ public class UndirectedGraph extends Graph{
 		}
 	}
 	
-	@Override
-	public void addNode(Integer label){
-		addNode(new Label(label));
-	}
+//	@Override
+//	public void addNode(Integer label){
+//		addNode(new Label(label));
+//	}
 	
 	@Override
-	public void addNode(Label label){
+	public void addNode(Integer label){
 		if (!nodes.containsKey(label)){
-			nodes.put(label, new Node(label));
+			nodes.put(label, new Node(new Label(label)));
 		}
 	}
 	
-	@Override
-	public void addEdge(Integer from, Integer to) throws GraphException{
-		addEdge(new Label(from), new Label(to));
-	}
+//	@Override
+//	public void addEdge(Integer from, Integer to) throws GraphException{
+//		addEdge(new Label(from), new Label(to));
+//	}
 	
 	@Override
-	public void addEdge(Label from, Label to) throws GraphException{
+	public void addEdge(Integer from, Integer to) throws GraphException{
 		Node nodeFrom = nodes.get(from);
 		Node nodeTo = nodes.get(to);
 		if(nodeFrom == null || nodeTo == null){
@@ -87,7 +87,7 @@ public class UndirectedGraph extends Graph{
 			for(Edge e : nodeTo.getEdges()){
 				e.replace(nodeFrom, nodeTo);
 			}
-			nodes.remove(nodeFrom.getLabel());
+			nodes.remove(nodeFrom.getLabel().getValue());
 		}
 	}
 	

@@ -6,7 +6,7 @@ import java.util.LinkedList;
 import com.github.jhilary.visualgo.graph.exception.GraphException;
 
 public abstract class Graph{
-	HashMap<Label, Node> nodes = new HashMap<Label, Node>();
+	HashMap<Integer, Node> nodes = new HashMap<Integer, Node>();
 	LinkedList<Edge> edges = new LinkedList<Edge>();
 	
 	public Graph() {}
@@ -15,22 +15,22 @@ public abstract class Graph{
 		
 	public Graph (Graph g){
 		for (Node node: g.getNodes().values()) {
-			this.addNode(node.getLabel());
+			this.addNode(node.getLabel().getValue());
 		}
 		for (Edge edge: g.getEdges()) {
-			Node from = nodes.get(edge.getFirst().getLabel());
-			Node to = nodes.get(edge.getSecond().getLabel());
+			Node from = nodes.get(edge.getFirst().getLabel().getValue());
+			Node to = nodes.get(edge.getSecond().getLabel().getValue());
 			this.addEdge(from, to);
 		}
 	}
 	
 	
-	public Graph(HashMap<Label, Node> nodes, LinkedList<Edge> edges){
+	public Graph(HashMap<Integer, Node> nodes, LinkedList<Edge> edges){
 		this.nodes = nodes;
 		this.edges = edges;
 	}
 	
-	public HashMap<Label, Node> getNodes() {
+	public HashMap<Integer, Node> getNodes() {
 		return nodes;
 	}
 	public LinkedList<Edge> getEdges() {
@@ -38,10 +38,10 @@ public abstract class Graph{
 	}
 	
 	public abstract void addNode(Integer label);
-	public abstract void addNode(Label label);
+//	public abstract void addNode(Label label);
 	
 	public abstract void addEdge(Integer from, Integer to) throws GraphException;
-	public abstract void addEdge(Label from, Label to) throws GraphException;
+//	public abstract void addEdge(Label from, Label to) throws GraphException;
 	
 	public abstract void removeEdge(Edge edge);
 	
