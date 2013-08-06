@@ -20,3 +20,9 @@ Run as -> Maven build.. -> [set goal "package"]
 
 Run in Eclipse:
 Run -> Main
+
+For run web application:
+$ mvn jetty:run
+
+http://localhost:8080/visualgo/main/mincut/algos.do
+
