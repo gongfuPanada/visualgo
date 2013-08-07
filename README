@@ -19,7 +19,7 @@ Build in eclipse:
 Run as -> Maven build.. -> [set goal "package"]
 
 Run in Eclipse:
-Run -> Main
+Run as -> Java Application -> [choose Main]
 
 For run web application:
 $ mvn jetty:run
