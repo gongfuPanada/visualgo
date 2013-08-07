@@ -4,12 +4,12 @@
 //  A project template for using arbor.js
 //
 
-(function($){
+(function(){
 
   var Renderer = function(canvas){
     var canvas = $(canvas).get(0)
     var ctx = canvas.getContext("2d");
-    var particleSystem
+    var particleSystem = null
 
     var that = {
       init:function(system){
@@ -20,17 +20,28 @@
         //
         // save a reference to the particle system for use in the .redraw() loop
         particleSystem = system
-
+        particleSystem.screen({padding:[100, 60, 60, 60], // leave some space at the bottom for the param sliders
+            step:.02})
         // inform the system of the screen dimensions so it can map coords for us.
         // if the canvas is ever resized, screenSize should be called again with
         // the new dimensions
-        particleSystem.screenSize(canvas.width, canvas.height) 
-        particleSystem.screenPadding(80) // leave an extra 80px of whitespace per side
+
+        $(window).resize(that.resize)
+        that.resize();
+        //particleSystem.screenPadding(80) // leave an extra 80px of whitespace per side
         
         // set up some event handlers to allow for node-dragging
         that.initMouseHandling()
       },
-      
+      resize:function(){
+	        var w = $(window).width()
+	        var h = $(window).height() - $("#navbar").outerHeight(true)
+	        console.log($("#navbar").outerHeight(true))
+	        canvas.width = w; canvas.height = h // resize the canvas element to fill the screen
+	        particleSystem.screenSize(w,h) // inform the system so it can map coords for us
+	        that.redraw()
+	      },
+	      
       redraw:function(){
         // 
         // redraw will be called repeatedly during the run whenever the node positions
@@ -41,6 +52,7 @@
         // which allow you to step through the actual node objects but also pass an
         // x,y point in the screen's coordinate system
         // 
+	if (particleSystem===null) return
         ctx.fillStyle = "white"
         ctx.fillRect(0,0, canvas.width, canvas.height)
         
@@ -125,16 +137,17 @@
   }    
 
   $(document).ready(function(){
-    var sys = arbor.ParticleSystem(1000, 600, 0.5) // create the system with sensible repulsion/stiffness/friction
+    var sys = arbor.ParticleSystem(1000, 1000, 0.5) // create the system with sensible repulsion/stiffness/friction
+    //var sys = arbor.ParticleSystem(4000, 500, 0.5, 55)
     sys.parameters({gravity:true}) // use center-gravity to make the graph settle nicely (ymmv)
-    sys.renderer = Renderer("#viewport") // our newly created renderer will have its .init() method called shortly by sys...
+    sys.renderer = Renderer("#mycanvas") // our newly created renderer will have its .init() method called shortly by sys...
 
     // add some nodes to the graph and watch it go...
     sys.addEdge('a','b')
     sys.addEdge('a','c')
     sys.addEdge('a','d')
     sys.addEdge('a','e')
-    sys.addNode('f', {alone:true, mass:.25})
+    //sys.addNode('f', {alone:true, mass:.25})
 
     // or, equivalently:
     //
@@ -153,4 +166,4 @@
     
   })
 
-})(this.jQuery)
+})()

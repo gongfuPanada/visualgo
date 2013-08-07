@@ -1,6 +1,23 @@
-body{
-  margin:0;
-  padding:20px;
-  font:12px/17px Arial, sans-serif;
-  background:#f9f9f9;
+.center {
+	vertical-align: middle;	
+	padding-bottom: 10px;
+	margin-bottom: 0px;
+}
+.container-canvas {
+    /* This could be done in one single declaration. See the extended sample. */
+    margin-right: auto;
+    margin-left: auto;
+
+    
+}
+#navbar {
+	position: relative;
+}
+
+#canvas {
+	position: relative;
+}
+
+body {
+	overflow: hidden
 }
