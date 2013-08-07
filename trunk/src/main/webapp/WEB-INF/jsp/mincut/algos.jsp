@@ -1,6 +1,6 @@
 <%-- Source project: sip03, branch: 01 (Maven Project) --%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<!DOCTYPE html>
 <html lang="en">
 <head>
 	<title>Visualgo</title>
@@ -19,6 +19,7 @@
         <h1 class="text-center">Visualgo</h1>
       </div>
     </div
+    
     <div id="canvas" class="container container-canvas">
       <canvas id="mycanvas"></canvas>
     </div>
