@@ -147,6 +147,9 @@
     sys.addEdge('a','c')
     sys.addEdge('a','d')
     sys.addEdge('a','e')
+    sys.addEdge('b','c')
+    sys.addEdge('b','d')
+    sys.addEdge('b','e')
     //sys.addNode('f', {alone:true, mass:.25})
 
     // or, equivalently:
