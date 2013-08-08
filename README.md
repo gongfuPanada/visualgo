@@ -1,8 +1,5 @@
 <h1>VISUALGO</h1>
 ***
-### Build status:
-[![Build Status](https://travis-ci.org/jhilary/visualgo.png)](https://travis-ci.org/jhilary/visualgo)
-***
 ### Get project:
 ```bash
 $ git clone git://github.com/jhilary/visualgo.git
@@ -32,4 +29,10 @@ $ mvn jetty:run
 ```
 In browser: http://127.0.0.1:8080/visualgo/main/mincut/algos.do 
 
+***
+### Current build & deploy status:
+
+[![Build Status](https://travis-ci.org/jhilary/visualgo.png)](https://travis-ci.org/jhilary/visualgo)  
+
+[![Deploy status](https://logos.heroku.com/images/heroku-logo-light-88x31.png)](http://limitless-atoll-5463.herokuapp.com/main/mincut/algos.do)
 
