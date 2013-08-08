@@ -1,4 +1,5 @@
-VISUALGO
+```html
+<h1>VISUALGO</h1>
 
 <b>Get project:</b>
 $ git clone git://github.com/jhilary/visualgo.git
@@ -19,4 +20,4 @@ Run as -> Maven build.. -> [set goal "package"]
 Run as -> Java Application -> [choose Main]
 $ mvn jetty:run
 In browser: http://localhost:8080/visualgo/main/mincut/algos.do
-
+```html
