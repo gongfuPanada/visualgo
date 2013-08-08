@@ -9,7 +9,7 @@ $ git clone git://github.com/jhilary/visualgo.git
 
 #### Build and run in batch mode:
 ```bash
-$ mvn package -Pbatch
+$ mvn package -Pbatch  
 $ java -jar target/visualgo-0.0.1-SNAPSHOT.jar
 ```
 #### Build and run in webapp mode:
