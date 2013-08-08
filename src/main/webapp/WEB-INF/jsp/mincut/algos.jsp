@@ -18,7 +18,7 @@
       <div class="container">
         <h1 class="text-center">Visualgo</h1>
       </div>
-    </div
+    </div>
     
     <div id="canvas" class="container container-canvas">
       <canvas id="mycanvas"></canvas>
