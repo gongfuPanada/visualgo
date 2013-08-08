@@ -1,27 +1,22 @@
 VISUALGO
 
-For installation use maven:
-
-Read-only address
+<b>Get project:</b>
 $ git clone git://github.com/jhilary/visualgo.git
-
-With authentification:
-$ git clone git@github.com:jhilary/visualgo.git
-
 $ cd visualgo/trunk
-$ mvn package
 
-Import in eclipse:
+<b>Build and run in batch mode:</b>
+$ mvn package -Pbatch
+$ java -jar target/visualgo-0.0.1-SNAPSHOT.jar
+
+<b>Build and run in webapp mode:</b>
+$ mvn package -Pwebapp
+$ java -jar target/dependency/jetty-runner.jar target/visualgo-0.0.1-SNAPSHOT.war
+In browser: http://127.0.0.1:8080/main/mincut/algos.do
+
+<b>Build and un in eclipse:</b>
 File -> Import -> Existing Maven Project
-
-Build in eclipse:
 Run as -> Maven build.. -> [set goal "package"]
-
-Run in Eclipse:
 Run as -> Java Application -> [choose Main]
-
-For run web application:
 $ mvn jetty:run
-
-http://localhost:8080/visualgo/main/mincut/algos.do
+In browser: http://localhost:8080/visualgo/main/mincut/algos.do
 
