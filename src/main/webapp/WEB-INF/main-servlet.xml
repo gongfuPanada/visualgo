@@ -14,7 +14,7 @@
     <bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter" />
     <bean class="org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping" />  
 	
-    <bean name="/mincut/*" class="com.github.jhilary.visualgo.web.VisualgoController"/>
+    <bean name="/*" class="com.github.jhilary.visualgo.web.VisualgoController"/>
 	
 	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver"
 		p:prefix="/WEB-INF/jsp/"
