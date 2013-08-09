@@ -76,7 +76,7 @@
 
           // draw a rectangle centered at pt
           var w = 10
-          ctx.fillStyle = (node.data.alone) ? "orange" : "black"
+          ctx.fillStyle = node.data.color
           ctx.fillRect(pt.x-w/2, pt.y-w/2, w,w)
         })    			
       },
@@ -143,30 +143,35 @@
     sys.renderer = Renderer("#mycanvas") // our newly created renderer will have its .init() method called shortly by sys...
 
     // add some nodes to the graph and watch it go...
-    sys.addEdge('a','b')
-    sys.addEdge('a','c')
-    sys.addEdge('a','d')
-    sys.addEdge('a','e')
-    sys.addEdge('b','c')
-    sys.addEdge('b','d')
-    sys.addEdge('b','e')
+//    sys.addEdge('a','b')
+//    sys.addEdge('a','c')
+//    sys.addEdge('a','d')
+//    sys.addEdge('a','e')
+//    sys.addEdge('b','c')
+//    sys.addEdge('b','d')
+//    sys.addEdge('b','e')
     //sys.addNode('f', {alone:true, mass:.25})
 
     // or, equivalently:
     //
-    // sys.graft({
-    //   nodes:{
-    //     f:{alone:true, mass:.25}
-    //   }, 
-    //   edges:{
-    //     a:{ b:{},
-    //         c:{},
-    //         d:{},
-    //         e:{}
-    //     }
-    //   }
-    // })
-    
+//     sys.graft({
+//       nodes:{
+//         f:{alone:true, mass:.25}
+//       }, 
+//       edges:{
+//         a:{ b:{},
+//             c:{},
+//             d:{},
+//             e:{}
+//         }
+//       }
+//     })
+//    
+//  })
+    var line = '{"nodes":{"foo":{"color":"red", "mass":2}, "bar":{"color":"green"}} }';
+
+    sys.graft(JSON.parse(line));
   })
+  
 
 })()

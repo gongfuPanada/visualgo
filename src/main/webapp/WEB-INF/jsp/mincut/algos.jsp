@@ -24,7 +24,6 @@
       <canvas id="mycanvas"></canvas>
     </div>
 
-  
   <script src="http://code.jquery.com/jquery.js"></script>
 
   <!-- run from the original source files: -->
