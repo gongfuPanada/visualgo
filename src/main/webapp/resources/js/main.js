@@ -75,7 +75,7 @@
 
           // draw a rectangle centered at pt
           var w = 10
-          ctx.fillStyle = node.data.color
+          ctx.fillStyle = "black"
           ctx.fillRect(pt.x-w/2, pt.y-w/2, w,w)
         })    			
       },
