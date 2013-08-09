@@ -23,7 +23,8 @@
     <div id="canvas" class="container container-canvas">
       <canvas id="mycanvas"></canvas>
     </div>
-
+    <input type="hidden" id="l" value="${line}"/>
+  
   <script src="http://code.jquery.com/jquery.js"></script>
 
   <!-- run from the original source files: -->

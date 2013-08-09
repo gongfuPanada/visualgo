@@ -36,7 +36,6 @@
       resize:function(){
 	        var w = $(window).width()
 	        var h = $(window).height() - $("#navbar").outerHeight(true)
-	        console.log($("#navbar").outerHeight(true))
 	        canvas.width = w; canvas.height = h // resize the canvas element to fill the screen
 	        particleSystem.screenSize(w,h) // inform the system so it can map coords for us
 	        that.redraw()
@@ -168,9 +167,14 @@
 //     })
 //    
 //  })
-    var line = '{"nodes":{"foo":{"color":"red", "mass":2}, "bar":{"color":"green"}} }';
-
-    sys.graft(JSON.parse(line));
+    var res = $.ajax({
+        type: 'GET',
+        url: "rest.do",
+        success: function(data){
+            sys.graft(JSON.parse(data))
+            console.log(JSON.parse(data))
+        }
+        });
   })
   
 
