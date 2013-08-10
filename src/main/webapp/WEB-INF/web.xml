@@ -12,13 +12,6 @@
     </param-value>
   </context-param>
   
-  <context-param>
-    <param-name>contextPropile</param-name>
-    <param-value>
-      classpath*:url.properties
-    </param-value>
-  </context-param>
-  
   <listener>
     <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
   </listener> 
