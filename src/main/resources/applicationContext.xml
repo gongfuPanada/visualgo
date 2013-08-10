@@ -10,7 +10,7 @@
         http://www.springframework.org/schema/mvc/spring-mvc.xsd">
 	
 	<bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer"
-	      p:location="url.properties"/>
+	      p:location="classpath:url.properties"/>
 	
 	<bean id="graphFactory" 
 	   	  class="com.github.jhilary.visualgo.graph.factory.UndirectedGraphFactory"
