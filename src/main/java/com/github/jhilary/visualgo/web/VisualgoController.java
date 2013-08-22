@@ -3,6 +3,7 @@ package com.github.jhilary.visualgo.web;
 import javax.servlet.ServletContext;
 
 import org.apache.log4j.Logger;
+import org.codehaus.jackson.map.annotate.JsonSerialize;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.stereotype.Controller;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.context.support.WebApplicationContextUtils;
 
+import com.github.jhilary.visualgo.graph.Graph;
 import com.github.jhilary.visualgo.graph.dao.GraphDao;
 import com.github.jhilary.visualgo.graph.exception.GraphException;
 
@@ -62,4 +64,26 @@ public final class VisualgoController {
         }
         return "";
     }
+    
+    @RequestMapping(
+            value="gasnnodes.do",
+            method=RequestMethod.GET,
+            produces="application/json"
+            )
+    @ResponseBody
+        public Graph getObjectAsJson() {
+            WebApplicationContext ctx = WebApplicationContextUtils.getRequiredWebApplicationContext(servletContext);
+            GraphDao graphDao = (GraphDao) ctx.getBean("graphDao");
+            Graph g;
+            try {
+                g = graphDao.readGraph();
+                log.info("Read graph: " + g);
+                log.info("Id: " + g.getId());
+                log.info("Nodes: " + g.getNodes().size());
+                return g;
+            } catch (GraphException e) {
+                log.error(e.getMessage());
+            }
+            return null;
+        }
   }

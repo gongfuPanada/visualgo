@@ -5,17 +5,21 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedList;
 
-import com.github.jhilary.visualgo.graph.exception.GraphException;
+import javax.xml.bind.annotation.XmlRootElement;
 
+import com.github.jhilary.visualgo.graph.exception.GraphException;
 
 public class UndirectedGraph extends Graph{
 	
 	public UndirectedGraph() {		
 		super();
+    id = nodes.size();
+
 	}
 	
 	public UndirectedGraph(UndirectedGraph g) {		
 		super(g);
+    id = nodes.size();
 	}
 	
 	public UndirectedGraph(LinkedList<Integer[]> edges) throws GraphException{
@@ -27,6 +31,7 @@ public class UndirectedGraph extends Graph{
 			addNode(neighbour);
 			addEdge(key, neighbour);
 		}
+		id = nodes.size();
 	}
 	
 	@Override
